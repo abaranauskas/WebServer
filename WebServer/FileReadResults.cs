@@ -4,5 +4,6 @@
     {        
         public byte[] FileBytes { get; set; } = new byte[0];
         public string FileExtension { get; set; } = ".default";
+        public string FileName { get; set; }
     }
 }

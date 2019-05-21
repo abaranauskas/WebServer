@@ -5,14 +5,16 @@ using Xunit;
 namespace WebServer.Tests
 {
     public class FileHandlerTest
-    {      
+    {
         [Fact]
         public void ReturnsFileNotFoundException()
         {
             var expected = new FileReadResults()
             {
                 FileBytes = File.ReadAllBytes(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\Cat.png"),
-                FileExtension = Path.GetExtension(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\cat.png")
+                FileExtension = Path.GetExtension(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\cat.png"),
+                FileName = "cat.png"
+
             };
 
             var rawUrl = "/cats.png";
@@ -29,7 +31,8 @@ namespace WebServer.Tests
             var expected = new FileReadResults()
             {
                 FileBytes = File.ReadAllBytes(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\Cat.png"),
-                FileExtension = Path.GetExtension(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\cat.png")
+                FileExtension = Path.GetExtension(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\cat.png"),
+                FileName = "cat.png"
             };
 
             var rawUrl = "/cats/cat.png";
@@ -46,7 +49,8 @@ namespace WebServer.Tests
             var expected = new FileReadResults()
             {
                 FileBytes = File.ReadAllBytes(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\Cat.png"),
-                FileExtension = Path.GetExtension(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\cat.png")
+                FileExtension = Path.GetExtension(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\cat.png"),
+                FileName = "cat.png"
             };
 
             var rawUrl = "/cat.png";
@@ -57,6 +61,7 @@ namespace WebServer.Tests
             Assert.NotNull(actual);
             Assert.Equal(actual.FileBytes, expected.FileBytes);
             Assert.Equal(actual.FileExtension, expected.FileExtension);
+            Assert.Equal(actual.FileName, expected.FileName);
         }
 
         [Fact]
@@ -65,7 +70,8 @@ namespace WebServer.Tests
             var expected = new FileReadResults()
             {
                 FileBytes = File.ReadAllBytes(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\myfile.txt"),
-                FileExtension = Path.GetExtension(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\myfile.txt")
+                FileExtension = Path.GetExtension(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\myfile.txt"),
+                FileName = "myfile.txt"
             };
 
             var rawUrl = "/myfile.txt";
@@ -76,6 +82,7 @@ namespace WebServer.Tests
             Assert.NotNull(actual);
             Assert.Equal(actual.FileBytes, expected.FileBytes);
             Assert.Equal(actual.FileExtension, expected.FileExtension);
+            Assert.Equal(actual.FileName, expected.FileName);
         }
 
         [Fact]
@@ -84,7 +91,8 @@ namespace WebServer.Tests
             var expected = new FileReadResults()
             {
                 FileBytes = File.ReadAllBytes(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\Cat.png"),
-                FileExtension = Path.GetExtension(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\cat.png")
+                FileExtension = Path.GetExtension(@"C:\Users\aidas\source\repos\WebServer\WebServer\TestFiles\cat.png"),
+                FileName = "cat.png"
             };
 
             var rawUrl = "/myfile.txt";
@@ -95,6 +103,7 @@ namespace WebServer.Tests
             Assert.NotNull(actual);
             Assert.NotEqual(actual.FileBytes, expected.FileBytes);
             Assert.NotEqual(actual.FileExtension, expected.FileExtension);
+            Assert.NotEqual(actual.FileName, expected.FileName);
         }
 
         [Fact]

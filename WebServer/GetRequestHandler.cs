@@ -62,6 +62,7 @@ namespace WebServer
             _response.StatusCode = (int)HttpStatusCode.OK;
             _response.Headers.Add(HttpResponseHeader.ContentType, GetContentTypeByFileExtension(fileReadResults.FileExtension));
             _response.Headers.Add(HttpResponseHeader.Date, DateTime.Now.ToLongDateString());
+            _response.AddHeader("content-disposition", $"attachment;filename={fileReadResults.FileName}");
 
             var buffer = fileReadResults.FileBytes;
             _context.Response.ContentLength64 = buffer.Length;

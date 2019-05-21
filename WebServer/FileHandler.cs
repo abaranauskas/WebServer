@@ -26,7 +26,7 @@ namespace WebServer
             byte[] bytes = File.ReadAllBytes(filePath);
             string fileExtension = Path.GetExtension(filePath);
 
-            return new FileReadResults() { FileBytes = bytes, FileExtension = fileExtension };
+            return new FileReadResults() { FileBytes = bytes, FileExtension = fileExtension, FileName= _fileName };
         }
 
         private bool ValidateFileName()
